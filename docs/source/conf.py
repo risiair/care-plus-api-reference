@@ -19,7 +19,7 @@ import sphinx_rtd_theme
 import sys, os
 
 # append the next line to conf.py, should change "backend" to your module name
-sys.path.insert(0, os.path.join(os.path.dirname(__file__),'..','C:/Users/John/Desktop/modules'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__),'..','modules'))
 
 
 def run_apidoc(_):
@@ -28,7 +28,7 @@ def run_apidoc(_):
     cur_dir = os.path.abspath(os.path.dirname(__file__))
     sys.path.append(parentFolder)
     # change "backend" to your module name
-    module = os.path.join(parentFolder,'backend')
+    module = os.path.join(parentFolder,'modules')
     output_path = os.path.join(cur_dir, 'api')
     main(['-e','-f','-o', output_path, module])
 
