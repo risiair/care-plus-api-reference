@@ -23,7 +23,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__),'..','modules'))
 
 
 def run_apidoc(_):
-    from sphinx.apidoc import main
+    from sphinx.ext.apidoc import main
     parentFolder = os.path.join(os.path.dirname(__file__), '..')
     cur_dir = os.path.abspath(os.path.dirname(__file__))
     sys.path.append(parentFolder)
