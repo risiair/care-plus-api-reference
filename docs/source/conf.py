@@ -48,6 +48,9 @@ author = 'John-Lai'
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
 
+# The master toctree document.
+master_doc = 'index'
+
 
 # -- General configuration ---------------------------------------------------
 
