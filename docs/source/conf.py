@@ -17,7 +17,11 @@ import sphinx_rtd_theme
 
 
 import sys, os
+import mock
 
+MOCK_MODULES = ['botocore', 'boto3']
+for mod_name in MOCK_MODULES:
+    sys.modules[mod_name] = mock.Mock()
 # append the next line to conf.py, should change "backend" to your module name
 sys.path.insert(0, os.path.join(os.path.dirname(__file__),'..','modules'))
 
