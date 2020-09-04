@@ -4,7 +4,7 @@ from boto3.dynamodb.conditions import Key
 import boto3
 import json
 import decimal
-def lambda_handler(event, context):
+def access_table(event, context):
     """Fetches rows from a Smalltable.
 
     Retrieves rows pertaining to the given keys from the Table instance
@@ -36,7 +36,7 @@ def lambda_handler(event, context):
     Raises:
       IOError: An error occurred accessing the smalltable.
     """
-    
+
     """
     Retrieves operation and payload from the event and 
     performs dynamo db batch operation processing.
