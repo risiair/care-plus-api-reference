@@ -25,7 +25,7 @@ for mod_name in MOCK_MODULES:
 # append the next line to conf.py, should change "backend" to your module name
 sys.path.insert(0, os.path.join(os.path.dirname(__file__),'..','modules'))
 
-
+'''
 def run_apidoc(_):
     from sphinx.ext.apidoc import main
     parentFolder = os.path.join(os.path.dirname(__file__), '..')
@@ -41,7 +41,7 @@ def setup(app):
     app.add_stylesheet('theme_overrides.css')
     # trigger the run_apidoc
     app.connect('builder-inited', run_apidoc)
-
+'''
 
 # -- Project information -----------------------------------------------------
 
