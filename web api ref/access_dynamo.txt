@@ -1,0 +1,129 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Access Dynamo
+  license:
+    name: MIT
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/risiair/John/1.0.0
+  - url: https://jrwgds4oz0.execute-api.ap-northeast-1.amazonaws.com/prod/dynamo
+paths:
+  /write-items:
+    post:
+      tags:
+      - "Write items"
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json;charset=UTF-8:
+            schema:
+                $ref: "#/components/schemas/UserData"
+      responses:
+        '200':
+          description: create success response
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateResponse"
+  /read-items:
+      post:
+        tags:
+        - "Read items"
+        requestBody:
+          description: Optional description in *Markdown*
+          required: true
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                  $ref: "#/components/schemas/UserKeys"
+        responses:
+          '200':
+            description: returns the user item
+          default:
+            description: unexpected error
+            content:
+              application/json:
+                schema: 
+                  $ref: "#/components/schemas/ReadResponse"
+                  
+components:
+  schemas:
+    CreateResponse:
+      type: object
+      properties:
+        content:
+          type: string
+          example: create success
+          
+    ReadResponse:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: "#/components/schemas/Record"
+    
+    UserKeys:
+      type: object
+      properties:
+        table:  
+          type: string
+          example: TableName
+        payload:
+          properties:
+            key1:
+              type: string
+              example: "1c:1b:b2:xx:xx:xx_1"
+            key2range:
+              type: array
+              example: [2020091808, 2020091809]
+    UserData:
+      type: object
+      properties:
+        table:  
+          type: string
+          example: TableName
+        payload:
+          $ref: "#/components/schemas/Records"
+    Records:
+      type: array
+      items:
+        $ref: "#/components/schemas/Record"
+    Record:
+      type: object  
+      properties:
+        DeviceID_UserID:
+          type: string
+          example: "12:13:75:4f:3f:44_1"
+        OrderTimestamp:
+          type: string
+          example: "1546329601"
+        lie_percentage:
+          type: string
+          example: "0.3"
+        sit_percentage:
+          type: string
+          example: "0.0"
+        stand_percentage:
+          type: string
+          example: "0.6"
+        walk_percentage:
+          type: string
+          example: "0.1"
+        entry_dict:
+          $ref: "#/components/schemas/entry_dict"
+    entry_dict:
+      type: object      
+      description: 在entry_dict中可以有多組key & value
+      properties:
+        region1: 
+          type: string
+          example: "0.5"
+        region2:
+          type: string
+          example: "0.5"
